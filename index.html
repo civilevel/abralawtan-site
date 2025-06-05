@@ -1324,6 +1324,54 @@ switcher.addEventListener("click", () => {
 
 // Initial page translation on load
 applyTranslation("ar");
+
+
+trackButton.addEventListener('click', async () => {
+  const trackingNumber = trackingInput.value.trim();
+  const currentLang = html.lang;
+  trackingResultsDiv.style.display = 'block';
+
+  if (!trackingNumber) {
+    trackingResultsDiv.textContent = currentLang === 'ar' ? 'الرجاء إدخال رقم تتبع.' :
+                                     currentLang === 'en' ? 'Please enter a tracking number.' :
+                                     '请输入追踪号码。';
+    return;
+  }
+
+  const courier = prompt(currentLang === 'ar' ? 'اختر شركة التوصيل: aramex أو imile' :
+                         currentLang === 'en' ? 'Choose courier: aramex or imile' :
+                         '请选择快递公司：aramex 或 imile').toLowerCase();
+
+  if (!['aramex', 'imile'].includes(courier)) {
+    trackingResultsDiv.textContent = currentLang === 'ar' ? 'شركة الشحن غير مدعومة.' :
+                                     currentLang === 'en' ? 'Unsupported courier.' :
+                                     '不支持的快递公司。';
+    return;
+  }
+
+  try {
+    const res = await fetch('https://abralawtan-site.vercel.app/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ trackingNumber, courier })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data) {
+      trackingResultsDiv.textContent = JSON.stringify(data, null, 2);
+    } else {
+      trackingResultsDiv.textContent = currentLang === 'ar' ? 'لم يتم العثور على بيانات التتبع.' :
+                                       currentLang === 'en' ? 'Tracking data not found.' :
+                                       '未找到追踪信息。';
+    }
+  } catch (err) {
+    trackingResultsDiv.textContent = currentLang === 'ar' ? 'حدث خطأ أثناء التتبع.' :
+                                     currentLang === 'en' ? 'Error fetching tracking info.' :
+                                     '获取追踪信息时出错。';
+  }
+});
+
 </script>
 
 <!-- Chatbot Icon and Main Chatbot Modal -->
