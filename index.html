@@ -631,7 +631,7 @@
         transition: background-color 0.2s ease;
         margin-bottom: 10px;
     }
-    .file-input-group label:hover {
+    file-input-group label: hover {
         background: var(--logo-blue-primary);
     }
     .file-input-group input[type="file"] {
@@ -815,13 +815,13 @@
         </div>
 
         <div class="team-member ceo-card"> <!-- CEO card (middle) -->
-          <img src="CEO.PNG" alt="المدير التنفيذي" class="team-photo" />
+          <img src="CEO.png" alt="المدير التنفيذي" class="team-photo" />
           <h3>المدير التنفيذي</h3>
           <p>يقود المؤسسة برؤية استراتيجية ويضمن تحقيق أهداف النمو والتوسع.</p>
         </div>
 
         <div class="team-member"> <!-- Administrative Manager card -->
-          <img src="admin-manager.jpg" alt="المدير الإداري" class="team-photo" />
+          <img src="admin-manager.png" alt="المدير الإداري" class="team-photo" />
           <h3>المدير الإداري</h3>
           <p>يدير الموارد الإدارية والمالية ويضمن التزام المؤسسة بالإجراءات التنظيمية.</p>
         </div>
@@ -1114,7 +1114,7 @@
         cvDesc: "You can upload your CV and documents here. For full application, please fill out the job application form via the link on the Contact Us page.",
         cvLabel: "Upload CV (PDF)",
         idLabel: "Upload Driver's License/ID (JPG, PNG)",
-        uploadNote: "Note: This interface allows you to select files only. To actually upload files to our systems, please use the job application form on the 'Contact Us' page which supports file uploads.",
+        Note: This interface allows you to select files only. To upload files to our systems, please use the job application form on the 'Contact Us' page which supports file uploads.",
         fileSelected: "File selected: ",
         noFile: "No file selected."
     }
@@ -1229,13 +1229,13 @@ function applyTranslation(lang) {
   const teamMembersAbout = document.querySelectorAll('#about .about-team-members-container .team-member');
   const teamMembersAboutData = [
     { ar: "المدير العام", en: "General Manager", zh: "总经理", descAr: "يشرف على العمليات اليومية ويضمن جودة الخدمات المقدمة للعملاء.", descEn: "Oversees daily operations and ensures the quality of services provided to customers.", descZh: "监督日常运营，确保为客户提供优质服务。" }, // Now at index 0
-    { ar: "المدير التنفيذي", en: "CEO", zh: "首席执行官", descAr: "يقود المؤسسة برؤية استراتيجية ويضمن تحقيق أهداف النمو والتوسع.", descEn: "Leads the organization with a strategic vision and ensures the achievement of growth and expansion goals.", descZh: "以战略眼光领导组织，确保实现增长和扩张目标。" }, // Now at index 1 (middle)
+    { ar: "المدير التنفيذي", en: "CEO", zh: "首席执行官", descAr: "يقود المؤسسة برؤية استراتيجية ويضمن تحقيق أهداف النمو والتوسع..", descEn: "Leads the organization with a strategic vision and ensures the achievement of growth and expansion goals.", descZh: "以战略眼光领导组织，确保实现增长和扩张目标。" }, // Now at index 1 (middle)
     { ar: "المدير الإداري", en: "Administrative Manager", zh: "行政经理", descAr: "يدير الموارد الإدارية والمالية ويضمن التزام المؤسسة بالإجراءات التنظيمية.", descEn: "Manages administrative and financial resources and ensures the organization's compliance with regulatory procedures.", descZh: "管理行政和财务资源，确保组织遵守监管程序。" } // Now at index 2
   ];
   teamMembersAbout.forEach((member, index) => {
     if (member && teamMembersAboutData[index]) { // Ensure element and data exist
       member.querySelector('h3').textContent = teamMembersAboutData[index][lang];
-      member.querySelector('p').textContent = teamMembersAboutData[index][lang === 'ar' ? 'descAr' : lang === 'en' ? 'descEn' : 'descZh'];
+      member.querySelector('p').textContent = teamMembersAboutData[index][lang === 'ar' ? 'descAr': lang === 'en' ? 'descEn': 'descZh'];
     }
   });
 
@@ -1261,7 +1261,7 @@ function applyTranslation(lang) {
   // Across Section (About Us - Cards, separate from team members)
   document.getElementById("across-title").textContent = t.across.title;
   const acrossCards = document.querySelectorAll('#across .info-card');
-  t.across.cards.forEach((cardData, index) => {
+  across. cards.forEach((cardData, index) => {
     if (acrossCards[index]) {
       acrossCards[index].querySelector('h3').textContent = cardData.heading;
       acrossCards[index].querySelector('p').textContent = cardData.paragraph;
@@ -1282,7 +1282,7 @@ function applyTranslation(lang) {
 
 
   // Locations Section
-  document.getElementById("Locations-title").textContent = t.Locations.title;
+  document.getElementById("Locations-title").textContent = t.Locations. title;
   const locationCards = document.querySelectorAll('#Locations .info-card');
   t.Locations.cards.forEach((cardData, index) => {
     if (locationCards[index]) {
@@ -1310,7 +1310,7 @@ function applyTranslation(lang) {
   // Adjust tracking widget text alignment based on language direction
   const trackingWidget = document.getElementById('home-tracking-widget');
   if (trackingWidget) {
-    trackingWidget.style.textAlign = (t.dir === 'rtl') ? 'right' : 'left';
+    trackingWidget.style.textAlign = (t. dir === 'rtl') ? 'right': 'left';
   }
 }
 
